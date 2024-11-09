@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import support.Property;
 
 /**
  * @author jussaragranja
@@ -13,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class BaseTest {
 
-    static WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeAll
     static void setupAll() {
@@ -23,6 +24,7 @@ public class BaseTest {
     @BeforeEach
     void setup() {
         driver = new ChromeDriver();
+        driver.get(Property.URL);
     }
 
     @AfterEach

@@ -7,7 +7,7 @@ public abstract class BasePage<H extends BasePage> {
 
     public WebDriver driver;
 
-    public void PageBase(){
+    public BasePage(){
         this.driver = BaseTest.driver;
         PageFactory.initElements(BaseTest.driver, this);
     }

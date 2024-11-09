@@ -6,7 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage<HomePage> {
 
-    @FindBy(xpath = "//h5[text()='Elements']")
+    //@FindBy(xpath = "//h5[text()='Elements']")
+    @FindBy(css = "div.card.mt-4.top-card")
     private WebElement menuElements;
 
     @FindBy(xpath = "//h5[text()='Forms']")

@@ -34,6 +34,7 @@ public class MenuElementsPage extends BasePage<MenuElementsPage> {
     private WebElement dynamicPropertiesMenu;
 
     public void navigateToTextBoxPage() {
+        new HomePage().accessElementsMenu();
         textBoxMenu.click();
     }
 
