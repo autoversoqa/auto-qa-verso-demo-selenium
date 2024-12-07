@@ -1,37 +1,32 @@
 package test;
 
-import com.github.javafaker.Faker;
 import core.BaseTest;
 import org.junit.jupiter.api.Test;
-import page.HomePage;
 import page.MenuElementsPage;
 import page.menuElements.TextBoxPage;
+import support.dto.UserDTO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static support.factory.CreateUserFactory.createFactoryUser;
 
 public class TextBoxTest extends BaseTest {
 
     @Test
     public void insertTextBoxSuccess(){
-        Faker faker = new Faker();
-        String insertFullName = faker.gameOfThrones().character();
-        String insertEmail = faker.internet().emailAddress();
-        String insertCurrentAddress = faker.address().fullAddress();
-        String insertPermanentAddress = faker.gameOfThrones().city();
-
+        UserDTO userDTO = createFactoryUser();
         new MenuElementsPage().navigateToTextBoxPage();
 
         TextBoxPage textBoxPage = new TextBoxPage();
-        textBoxPage.enterFullName(insertFullName)
-                .enterEmail(insertEmail)
-                .enterCurrentAddress(insertCurrentAddress)
-                .enterPermanentAddress(insertPermanentAddress)
+        textBoxPage.enterFullName(userDTO.getFullName())
+                .enterEmail(userDTO.getEmail())
+                .enterCurrentAddress(userDTO.getCurrentAddress())
+                .enterPermanentAddress(userDTO.getPermanentAddress())
                 .clickSubmitButton();
 
-        assertEquals(insertFullName, textBoxPage.getDisplayedName());
-        assertEquals(insertEmail, textBoxPage.getDisplayedEmail());
-        assertEquals(insertCurrentAddress, textBoxPage.getDisplayedCurrentAddress());
-        assertEquals(insertPermanentAddress, textBoxPage.getDisplayedPermanentAddress());
+        assertEquals(userDTO.getFullName(), textBoxPage.getDisplayedName());
+        assertEquals(userDTO.getEmail(), textBoxPage.getDisplayedEmail());
+        assertEquals(userDTO.getCurrentAddress(), textBoxPage.getDisplayedCurrentAddress());
+        assertEquals(userDTO.getPermanentAddress(), textBoxPage.getDisplayedPermanentAddress());
     }
 
 }
